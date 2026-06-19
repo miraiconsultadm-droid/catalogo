@@ -6,10 +6,10 @@
 /* ----------------------------- Tokens / Brand ---------------------------- */
 :root {
   /* MirAI shell ------------------------------------------------------------ */
-  --bg: #07070c;
-  --bg-2: #0d0d16;
-  --surface: #13131f;
-  --surface-2: #1a1a28;
+  --bg: #060a06;
+  --bg-2: #0a0f0a;
+  --surface: #101510;
+  --surface-2: #161d16;
   --line: rgba(255, 255, 255, 0.08);
   --line-strong: rgba(255, 255, 255, 0.16);
 
@@ -17,15 +17,15 @@
   --ink-soft: #c7c7d6;
   --ink-muted: #8a8a9e;
 
-  --brand: #7b61ff;          /* MirAI violet  */
-  --brand-2: #14d6ff;        /* MirAI cyan    */
-  --brand-3: #ff5b7f;        /* Japan accent  */
+  --brand: #84e80e;          /* MirAI green (essência) */
+  --brand-2: #00d26a;        /* MirAI emerald          */
+  --brand-3: #ffffff;        /* MirAI white            */
   --brand-grad: linear-gradient(110deg, var(--brand) 0%, var(--brand-2) 100%);
 
   /* Per-section theme defaults (overridden by [data-brand]) ---------------- */
   --theme: var(--brand);
   --theme-2: var(--brand-2);
-  --theme-ink: #ffffff;
+  --theme-ink: #06140a;
   --theme-surface: var(--surface);
   --theme-display: "Space Grotesk", "Inter", sans-serif;
 
@@ -59,7 +59,7 @@
 [data-brand="mirai"] {
   --theme: var(--brand);
   --theme-2: var(--brand-2);
-  --theme-ink: #fff;
+  --theme-ink: #06140a;
   --theme-surface: var(--surface);
   --theme-display: "Space Grotesk", "Inter", sans-serif;
 }
@@ -139,7 +139,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; font-weight: 7
 .brand .logo-dot {
   width: 30px; height: 30px; border-radius: 9px;
   background: var(--brand-grad);
-  display: grid; place-items: center; color: #fff; font-size: 0.95rem; font-weight: 700;
+  display: grid; place-items: center; color: #06140a; font-size: 0.95rem; font-weight: 700;
   box-shadow: 0 6px 20px -6px var(--brand);
 }
 .nav-links { display: flex; align-items: center; gap: 30px; }
@@ -155,38 +155,40 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; font-weight: 7
 
 /* ------------------------------- Hero ------------------------------------ */
 .hero {
-  min-height: 100svh; display: flex; align-items: center;
-  padding-top: 120px; padding-bottom: 90px; overflow: hidden;
+  min-height: 100svh; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding-top: 120px; padding-bottom: 90px; overflow: hidden;
 }
 .hero::before {
-  content: ""; position: absolute; inset: 0; z-index: -2;
+  content: ""; position: absolute; inset: 0; z-index: -4;
   background:
-    radial-gradient(60% 50% at 18% 8%, rgba(123, 97, 255, 0.22), transparent 60%),
-    radial-gradient(50% 45% at 92% 22%, rgba(20, 214, 255, 0.16), transparent 60%),
-    radial-gradient(40% 40% at 70% 100%, rgba(255, 91, 127, 0.10), transparent 60%);
+    radial-gradient(60% 55% at 50% 0%, rgba(132, 232, 14, 0.20), transparent 62%),
+    radial-gradient(46% 42% at 16% 32%, rgba(0, 210, 106, 0.16), transparent 60%),
+    radial-gradient(46% 42% at 86% 40%, rgba(132, 232, 14, 0.12), transparent 60%);
 }
 .hero::after {
-  content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0.4;
+  content: ""; position: absolute; inset: 0; z-index: -3; opacity: 0.35;
   background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
   background-size: 64px 64px;
-  mask-image: radial-gradient(circle at 50% 35%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 45%, #000 0%, transparent 70%);
 }
+.hero-fx { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; pointer-events: none; }
 .hero-kanji {
-  position: absolute; right: -3vw; top: 50%; transform: translateY(-50%);
-  font-family: var(--font-display); font-size: 44vw; line-height: 1;
-  color: #fff; opacity: 0.025; pointer-events: none; z-index: -1; font-weight: 700;
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  font-family: var(--font-display); font-size: min(64vh, 62vw); line-height: 1;
+  color: var(--brand); opacity: 0.08; pointer-events: none; z-index: -1; font-weight: 700;
+  text-shadow: 0 0 90px rgba(132, 232, 14, 0.25);
 }
-.hero-inner { max-width: 880px; }
+.hero-inner { max-width: 900px; margin-inline: auto; }
 .hero h1 { margin-bottom: 24px; }
 .hero h1 .grad { background: var(--brand-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
-.hero .lede { margin-bottom: 38px; }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; }
+.hero .lede { margin: 0 auto 38px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
 .pill {
   display: inline-flex; align-items: center; gap: 9px; margin-bottom: 28px;
   padding: 8px 16px; border-radius: 100px; border: 1px solid var(--line-strong);
   background: rgba(255, 255, 255, 0.03); font-size: 0.82rem; color: var(--ink-soft);
 }
-.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-2); box-shadow: 0 0 0 4px rgba(20, 214, 255, 0.18); }
+.pill .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand); box-shadow: 0 0 0 4px rgba(132, 232, 14, 0.18); }
 
 /* ---------------------------- Generic cards ------------------------------ */
 .grid { display: grid; gap: 22px; }
@@ -261,7 +263,7 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; font-weight: 7
 .example .tag {
   flex: 0 0 auto; align-self: flex-start; font-family: var(--font-display); font-weight: 700;
   font-size: 0.78rem; padding: 6px 12px; border-radius: 100px;
-  background: color-mix(in oklab, var(--brand) 18%, transparent); color: #cbbcff;
+  background: color-mix(in oklab, var(--brand) 20%, transparent); color: #cdfaa0;
 }
 .example h4 { font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 6px; }
 .example p { color: var(--ink-muted); font-size: 0.94rem; }
@@ -363,8 +365,8 @@ h1, h2, h3 { font-family: var(--font-display); line-height: 1.05; font-weight: 7
 .final {
   text-align: center;
   background:
-    radial-gradient(60% 80% at 50% 0%, rgba(123, 97, 255, 0.22), transparent 60%),
-    radial-gradient(50% 60% at 50% 100%, rgba(20, 214, 255, 0.14), transparent 60%),
+    radial-gradient(60% 80% at 50% 0%, rgba(132, 232, 14, 0.20), transparent 60%),
+    radial-gradient(50% 60% at 50% 100%, rgba(0, 210, 106, 0.14), transparent 60%),
     var(--bg-2);
   border-top: 1px solid var(--line);
 }
